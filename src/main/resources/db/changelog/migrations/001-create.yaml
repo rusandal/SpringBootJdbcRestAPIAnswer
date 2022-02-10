@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeset:
+    id: 1
+    author: ruslan
+    changes:
+      - createTable:
+          tableName: customers
+          column:
+            -column:
+              name: id
+              type: int
+              constraints:
+                primaryKey: true
+
