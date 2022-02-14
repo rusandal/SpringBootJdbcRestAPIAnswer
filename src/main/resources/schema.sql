@@ -1,4 +1,4 @@
-CREATE TABLE jdbctemplate.CUSTOMERS (
+/*CREATE TABLE jdbctemplate.CUSTOMERS (
                            id int auto_increment primary key,
                            name varchar(15) NOT NULL ,
                            surname varchar(25) NOT NULL ,
@@ -13,4 +13,4 @@ CREATE TABLE jdbctemplate.ORDERS (
                         amound int,
                         FOREIGN KEY (customer_id)
                             REFERENCES jdbctemplate.CUSTOMERS(id)
-);
+);*/

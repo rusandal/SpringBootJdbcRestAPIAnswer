@@ -1,1 +1,1 @@
-SELECT o.product_name FROM ORDERS o JOIN CUSTOMERS C on C.id = o.customer_id WHERE name=:name;
+SELECT o.productName FROM OrdersModel o JOIN Customers c on c.id = o.customers WHERE c.name=:name
