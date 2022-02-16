@@ -1,10 +1,6 @@
 databaseChangeLog:
-  #-include:
-  #  file: migration/001-schema.sql
-  #  relativeToChangelogFile: true
-  -changeSet:
-    id: 1
-    author: ruslan
-  -include:
-    file: db/changelog/migrations/002-sample.xml
-
+  - changeSet:
+      id: 1
+      author: ruslan
+  - include:
+      file: db/changelog/migrations/002-sample.xml

@@ -7,17 +7,19 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd">
     <changeSet id="1" author="ruslan">
         <createTable tableName="customer">
-            <column name="id" type="int" autoIncrement="true"/>
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
             <column name="name" type="varchar(15)">
                 <constraints nullable="false"/>
             </column>
-            <column name="surname" type="String">
+            <column name="surname" type="varchar(15)">
                 <constraints nullable="false"/>
             </column>
             <column name="age" type="Integer">
                 <constraints checkConstraint="check ( age BETWEEN 0 AND 120)"/>
             </column>
-            <column name="phone_number" type="varchar"/>
+            <column name="phone_number" type="varchar(13)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
