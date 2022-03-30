@@ -4,3 +4,8 @@ databaseChangeLog:
       author: ruslan
   - include:
       file: db/changelog/migrations/002-sample.xml
+  - changeSet:
+      id: 2
+      author: ruslan
+  - include:
+      file: db/changelog/migrations/001-schema.sql

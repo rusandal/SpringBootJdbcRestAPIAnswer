@@ -21,6 +21,9 @@ public class Orders{
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     private static String read(String scriptFileName) {
         try (InputStream is = new ClassPathResource(scriptFileName).getInputStream();
              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is))) {
