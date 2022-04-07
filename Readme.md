@@ -1,6 +1,6 @@
-# Rest сервер с взаимодействием с БД
+# Rest сервер предоставляющий информацию о покупке в интернет магазине
 ## Описание
-Программа представляет возможность получения JSON объектов из БД. На контроллере сконфигурирован один мапинг для получения данных.
+Программа представляет возможность получения информации из БД о купленных товарах по имени покупателя. На контроллере сконфигурирован один мапинг для получения данных.
 В составе программы используются:
 1. RestController обрабатывающий входящие и исходящие запросы.
 2. MySql сервер (возможно поднять контейнер Docker).
@@ -27,8 +27,11 @@ spring.datasource.password=mysql
 ## Запуск программы
 1. Поднимается TomCat на порту 8080
 2. Происходит подключение к БД и создании указанной схемы - jdbctemplate
-3. Стартует Liquibase и создает таблицу "customer" и записывает действие в историю (таблицы DATABASECHANGELOG, DATABASECHANGELOGLOCK)
-4. Наполнение данных resource\data.sql
+3. Стартует Liquibase и читает master changeLog  
+* создает таблицы покупатели и заказы (customer, orders) из 2-х changeSet (исполняемые скрипты в формате XML, SQL для наглядности) 
+* наполняет данными (исполняемый скрипт YAML)
+* записывает действие в историю (таблицы DATABASECHANGELOG, DATABASECHANGELOGLOCK)    
+Данные:
 ```
 INSERT INTO jdbctemplate.customer VALUES (1,'Vasya', 'Pupkin', 100, 89999999999);
 INSERT INTO jdbctemplate.customer VALUES (2, 'Ivan', 'Ivanov', 10, 0);
@@ -49,4 +52,7 @@ http://127.0.0.1:8080/products/fetch-product?name=vasya
 [Swagger UI](http://localhost:8080/swagger-ui/index.html)  
 [Swagger UI image](Swagger.PNG)  
 ## Дополнительная информация
-Для получения данных из таблицы используется технология выполнения запроса из файл с sql запросом (скриптом query.sql)
+Запрос к БД выполняется путем выполнения скрипта query.sql
+```
+SELECT o.product_name FROM orders o JOIN customer C on C.id = o.customer_id WHERE name=:name;
+```

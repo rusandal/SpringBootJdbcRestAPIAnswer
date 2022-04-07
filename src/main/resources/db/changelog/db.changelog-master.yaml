@@ -3,9 +3,19 @@ databaseChangeLog:
       id: 1
       author: ruslan
   - include:
-      file: db/changelog/migrations/002-sample.xml
+      file: db/changelog/migrations/001-create-customer-table.xml
   - changeSet:
       id: 2
       author: ruslan
   - include:
-      file: db/changelog/migrations/001-schema.sql
+      file: db/changelog/migrations/002-create-orders-table.sql
+  - changeSet:
+      id: 3
+      author: ruslan
+      changes:
+      - sqlFile:
+          dbms: 'all'
+          endDelimiter: "@@"
+          splitStatements: true
+          path: db/changelog/data.sql
+          stripComments: true

@@ -27,7 +27,6 @@ public class Controller {
             description = "Получение названия купленных товаров по имени покупателя (Vasya OR Ivan)"
     )
     private List<String> getProduct(@RequestParam @Parameter(description = "Имя пользователя") String name){
-        //return "123";
         return service.getProductFromRepo(name);
     }
 }

@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeset:
+    id: 1
+    author: ruslan
+    changes:
+    - sqlFile:
+        dbms: 'all'
+        endDelimiter: "@@"
+        splitStatements: true
+        path: src/main/resources/db/data.sql
+        stripComments: true
+
